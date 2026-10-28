@@ -1,0 +1,545 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FIT Wellness - Pilates, Gym & Yoga</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7faf8;
+            color: #26352e;
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px #00000012;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 0;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: #214d3a;
+            font-size: 23px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span:last-child {
+            color: #7aaf83;
+        }
+
+        .logo-icon {
+            background: #214d3a;
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            margin-right: 5px;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #34463b;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #62a675;
+        }
+
+        .btn-login {
+            display: inline-block;
+            background: #285d43;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        .btn-login:hover {
+            background: #43865e;
+        }
+
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #e3f3e7, #f7faf8);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #214d3a;
+            margin: 15px 0;
+        }
+
+        .hero p:not(.category) {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .category {
+            color: #4b9b68;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .info-section {
+            padding-top: 65px;
+            padding-bottom: 35px;
+        }
+
+        .info-section h2 {
+            color: #214d3a;
+            font-size: 30px;
+            margin: 10px 0;
+        }
+
+        .info-section > p:not(.category) {
+            margin-bottom: 15px;
+        }
+
+        /* KARTU OLAHRAGA */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+            margin-top: 28px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 13px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px #00000012;
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* GAMBAR PILATES, GYM, DAN YOGA */
+        .news-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            background: #e6eee6;
+        }
+
+        .news-content {
+            padding: 22px;
+        }
+
+        .news-content h3 {
+            color: #285d43;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .news-content p {
+            font-size: 14px;
+            color: #5b665f;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #378151;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #1d3c2d;
+            color: white;
+            margin-top: 60px;
+            padding-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding-bottom: 30px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 18px;
+            background: #142e21;
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+            .news-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .news-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER DAN NAVIGASI -->
+    <header class="header">
+        <div class="container navbar">
+
+            <a href="index.html" class="logo">
+                <span class="logo-icon">FW</span>
+                FIT <span>Wellness</span>
+            </a>
+
+            <nav>
+                <a href="#beranda">Beranda</a>
+                <a href="#profil">Tentang Kami</a>
+                <a href="#program">Kategori Olahraga</a>
+                <a href="#kebugaran">Tips Kebugaran</a>
+                <a href="berita.html">Berita</a>
+                <a href="#kontak">Kontak</a>
+            </nav>
+
+            <a href="login.html" class="btn-login">Login ↗</a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- BERANDA -->
+        <section class="hero" id="beranda">
+            <div class="container">
+                <p class="category">PORTAL INFORMASI KEBUGARAN</p>
+
+                <h1>Selamat Datang di FIT Wellness</h1>
+
+                <p>
+                    Temukan informasi tentang Pilates, Gym, dan Yoga.
+                    Pelajari berbagai jenis latihan, manfaat olahraga,
+                    tips menjaga kesehatan, serta cara membangun
+                    gaya hidup aktif dan seimbang.
+                </p>
+
+                <a href="#program" class="btn-login">
+                    Jelajahi Olahraga →
+                </a>
+            </div>
+        </section>
+
+        <!-- TENTANG KAMI -->
+        <section class="container info-section" id="profil">
+            <p class="category">TENTANG KAMI</p>
+
+            <h2>Mengenal FIT Wellness</h2>
+
+            <p>
+                FIT Wellness merupakan website informasi olahraga
+                yang membahas Pilates, Gym, dan Yoga. Website ini
+                dibuat untuk membantu pengunjung mengenal berbagai
+                latihan fisik, menjaga kebugaran tubuh, serta
+                menerapkan kebiasaan hidup sehat.
+            </p>
+
+            <p>
+                Kami percaya bahwa setiap orang dapat memulai
+                perjalanan hidup sehat sesuai kemampuan dan
+                kebutuhannya masing-masing.
+            </p>
+        </section>
+
+        <!-- KATEGORI OLAHRAGA -->
+        <section class="container info-section" id="program">
+            <p class="category">PILIHAN OLAHRAGA</p>
+
+            <h2>Kategori Olahraga</h2>
+
+            <p>
+                Kenali berbagai jenis latihan dan pilih aktivitas
+                yang sesuai dengan tujuan kebugaranmu.
+            </p>
+
+            <div class="news-grid">
+
+                <!-- GAMBAR PILATES -->
+                <article class="news-card">
+
+                    <img src="gambar/pilates3.jpg"
+                         alt="Latihan Pilates menggunakan matras">
+
+                    <div class="news-content">
+                        <h3>Pilates</h3>
+
+                        <p>
+                            Pilates merupakan latihan yang berfokus
+                            pada kekuatan otot inti, postur tubuh,
+                            fleksibilitas, dan pengendalian gerakan.
+                            Latihan ini dapat dilakukan menggunakan
+                            matras atau peralatan khusus.
+                        </p>
+
+                        <a href="berita.html" class="read-more">
+                            Pelajari Lebih Lanjut →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- GAMBAR GYM -->
+                <article class="news-card">
+
+                    <img src="gambar/gym.jpg"
+                         alt="Latihan angkat beban di gym">
+
+                    <div class="news-content">
+                        <h3>Gym & Fitness</h3>
+
+                        <p>
+                            Gym menyediakan berbagai latihan,
+                            seperti angkat beban dan kardio,
+                            untuk mendukung kekuatan otot dan
+                            kebugaran tubuh.
+                        </p>
+
+                        <a href="berita.html" class="read-more">
+                            Pelajari Lebih Lanjut →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- GAMBAR YOGA -->
+                <article class="news-card">
+
+                    <img src="gambar/yoga.jpg"
+                         alt="Latihan yoga di atas matras">
+
+                    <div class="news-content">
+                        <h3>Yoga</h3>
+
+                        <p>
+                            Yoga memadukan gerakan tubuh,
+                            pernapasan, dan konsentrasi untuk
+                            membantu melatih keseimbangan
+                            serta fleksibilitas.
+                        </p>
+
+                        <a href="berita.html" class="read-more">
+                            Pelajari Lebih Lanjut →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- TIPS KEBUGARAN -->
+        <section class="container info-section" id="kebugaran">
+            <p class="category">INFORMASI KESEHATAN</p>
+
+            <h2>Tips Menjaga Kebugaran Tubuh</h2>
+
+            <p>
+                Menjaga kebugaran tidak hanya dilakukan ketika
+                berolahraga. Istirahat yang cukup, makanan bergizi,
+                minum air yang cukup, dan aktivitas fisik secara
+                teratur juga penting untuk mendukung kesehatan.
+            </p>
+
+            <div class="news-grid">
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <h3>01. Lakukan Pemanasan</h3>
+                        <p>
+                            Mulailah latihan dengan pemanasan
+                            untuk mempersiapkan tubuh sebelum
+                            melakukan aktivitas fisik.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <h3>02. Jaga Pola Istirahat</h3>
+                        <p>
+                            Berikan tubuh waktu untuk beristirahat
+                            dan memulihkan diri setelah berolahraga.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <h3>03. Minum Air yang Cukup</h3>
+                        <p>
+                            Penuhi kebutuhan cairan tubuh sebelum,
+                            selama, dan setelah aktivitas fisik.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <h3>04. Konsisten Berolahraga</h3>
+                        <p>
+                            Pilih aktivitas yang kamu sukai dan
+                            lakukan secara bertahap sesuai
+                            kemampuan tubuh.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+            <a href="berita.html" class="btn-login">
+                Baca Tips Olahraga →
+            </a>
+        </section>
+
+        <!-- BERITA -->
+        <section class="container info-section" id="berita">
+            <p class="category">KABAR TERBARU</p>
+
+            <h2>Berita Olahraga</h2>
+
+            <p>
+                Temukan informasi seputar Pilates, latihan Gym,
+                Yoga, kebugaran, dan gaya hidup sehat.
+            </p>
+
+            <a href="berita.html" class="btn-login">
+                Baca Semua Berita →
+            </a>
+        </section>
+
+        <!-- KEGIATAN OLAHRAGA -->
+        <section class="container info-section" id="kegiatan">
+            <p class="category">AKTIVITAS KEBUGARAN</p>
+
+            <h2>Mulai Perjalanan Sehatmu</h2>
+
+            <p>
+                Kamu bisa memulai dengan latihan Pilates untuk
+                melatih kontrol tubuh, Gym untuk latihan kekuatan,
+                atau Yoga untuk melatih fleksibilitas dan
+                keseimbangan.
+            </p>
+
+            <p>
+                Sesuaikan jenis latihan dengan kemampuanmu.
+                Pelajari teknik yang benar dan jangan memaksakan
+                gerakan yang menimbulkan rasa sakit.
+            </p>
+        </section>
+
+        <!-- KONTAK -->
+        <section class="container info-section" id="kontak">
+            <p class="category">INFORMASI KONTAK</p>
+
+            <h2>Kontak FIT Wellness</h2>
+
+            <p>
+                Punya pertanyaan atau saran tentang olahraga,
+                Pilates, Gym, dan Yoga? Hubungi pengelola
+                website melalui email.
+            </p>
+
+            <a href="mailto:info@fitwellness.example"
+               class="btn-login">
+                Hubungi Kami ✉
+            </a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <div>
+                <h3>FIT Wellness</h3>
+                <p>Pilates, Gym, Yoga, dan Gaya Hidup Sehat.</p>
+            </div>
+
+            <div>
+                <h3>Navigasi</h3>
+                <p><a href="#beranda">Beranda</a></p>
+                <p><a href="#profil">Tentang Kami</a></p>
+                <p><a href="#program">Kategori Olahraga</a></p>
+                <p><a href="berita.html">Berita Olahraga</a></p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2026 FIT Wellness | Pilates, Gym & Yoga</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+```
